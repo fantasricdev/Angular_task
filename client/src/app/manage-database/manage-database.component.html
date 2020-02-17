@@ -1,0 +1,181 @@
+<div class="card">
+  <div class="card-header card-header-danger">
+    <h4 class="card-title">View Database</h4>
+    <p class="card-category"> You can see Database in here
+      !!!</p>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <div class="example-container mat-elevation-z8">
+
+        <mat-table [dataSource]="dataSource" matSort>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> ID
+            </mat-header-cell>
+            <mat-cell *matCellDef="let i=index"> {{i+1}} </mat-cell>
+          </ng-container>
+
+          <!-- ID Column -->
+          <ng-container matColumnDef="slider">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Slider
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.item1}} </mat-cell>
+          </ng-container>
+
+          <!-- Progress Column -->
+          <ng-container matColumnDef="password">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Password
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.item2}} </mat-cell>
+          </ng-container>
+
+          <!-- Color Column -->
+          <ng-container matColumnDef="phonenumber">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Phonenumber
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color">
+              {{row.item3}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Email
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color">
+              {{row.item4}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="checkbox">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> CheckBox
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color">
+              {{row.item5}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="dropdown">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> DropDown
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color">
+              {{row.item6}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="radiobutton">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> RadioButton
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color">
+              {{row.item7}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Edit
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color">
+              <button mat-button (click)="del_edit(row._id,1)"> Edit</button>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="delete">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Delete
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row" [style.color]="row.color">
+              <button mat-button (click)="del_edit(row._id,2)">delete</button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;">
+          </mat-row>
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="card" *ngIf="flagvalue">
+  <div class="card-header card-header-danger">
+    <h4 class="card-title">Edit Database</h4>
+    <p class="card-category">please work here !!!</p>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <br/>
+      <mat-slider
+        thumbLabel
+        [displayWith]="formatLabel"
+        tickInterval="1000"
+        min="1"
+        [(ngModel)]="item1"
+        max="100000"></mat-slider>
+    </div>
+    <div class="col-md-8">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"
+          [(ngModel)]="item2">
+        <button mat-icon-button matSuffix (click)="hide= !hide"
+          [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="col-md-8">
+      <mat-form-field appearance="fill">
+        <mat-label>phonenumber</mat-label>
+        <input matInput type="number" class="example-right-align"
+          [(ngModel)]="item3">
+        <!-- <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span> -->
+      </mat-form-field>
+    </div>
+    <div class="col-md-8">
+      <mat-form-field class="example-full-width"
+        style="width: 100%;" appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="email" [formControl]="email"
+          [(ngModel)]="item4" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-8">
+      <mat-checkbox [(ngModel)]="variable[0]" value="chocolate">Chocolate</mat-checkbox>
+      <mat-checkbox [(ngModel)]="variable[1]" value="vanilla">Vanilla</mat-checkbox>
+      <mat-checkbox [(ngModel)]="variable[2]" value="strawberry">Strawberry</mat-checkbox>
+    </div>
+    <div class="col-md-8">
+      <mat-form-field style="width: 100%;">
+        <mat-label>Major:</mat-label>
+        <mat-select [(ngModel)]="item6">
+          <mat-option *ngFor="let item of major_list" value="{{item}}">{{item}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-8">
+      <section class="example-section">
+        <label class="example-margin">item7:</label>&nbsp;
+        <mat-radio-group [(ngModel)]="item7">
+          <mat-radio-button class="example-margin" value="primary">
+            Primary
+          </mat-radio-button>
+          <mat-radio-button class="example-margin" value="accent">
+            Accent
+          </mat-radio-button>
+          <mat-radio-button class="example-margin" value="warn">
+            Warn
+          </mat-radio-button>
+        </mat-radio-group>
+      </section>
+    </div>
+  </div>
+  <button mat-raised-button type="submit" class="btn
+    btn-danger pull-right" (click)="editmydata()">Edit Database</button>
+  <div class="clearfix"></div>
+</div>

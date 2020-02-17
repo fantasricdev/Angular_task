@@ -1,0 +1,51 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">Login Page</h4>
+                <p class="card-category">please input here</p>
+            </div>
+            <div class="card-body">
+                <div id="typography">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-2">User ID : </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width"
+                                style="width: 100%;">
+                                <textarea matInput placeholder="Name:"
+                                    [(ngModel)]="id"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-2">Password : </div>
+                        <div class="col-md-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Enter your password</mat-label>
+                                <input matInput [type]="hide ? 'password' :
+                                    'text'" [(ngModel)]="password">
+                                <button mat-icon-button matSuffix (click)="hide=
+                                    !hide"
+                                    [attr.aria-label]="'Hide password'"
+                                    [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' :
+                                        'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-2"> </div>
+                        <div class="col-md-4">
+                            <button mat-raised-button type="submit" class="btn
+                                btn-danger pull-right"
+                                (click)="login()">Create Database</button>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

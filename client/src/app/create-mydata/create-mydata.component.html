@@ -1,0 +1,72 @@
+
+<div class="row">
+  <div class="col-md-8">
+    <mat-slider
+      thumbLabel
+      [displayWith]="formatLabel"
+      tickInterval="1000"
+      min="1"
+      [(ngModel)]="item1"
+      max="100000"></mat-slider>
+  </div>
+  <div class="col-md-8">
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="item2">
+      <button mat-icon-button matSuffix (click)="hide= !hide"
+        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="col-md-8">
+    <mat-form-field appearance="fill">
+      <mat-label>phonenumber</mat-label>
+      <input matInput type="number" class="example-right-align"
+        [(ngModel)]="item3">
+      <!-- <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span> -->
+    </mat-form-field>
+  </div>
+  <div class="col-md-8">
+    <mat-form-field class="example-full-width"
+      style="width: 100%;" appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="email" [formControl]="email"
+        [(ngModel)]="item4" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="col-md-8">
+    <mat-checkbox [(ngModel)]="variable[0]" value="chocolate">Chocolate</mat-checkbox>
+    <mat-checkbox [(ngModel)]="variable[1]" value="vanilla">Vanilla</mat-checkbox>
+    <mat-checkbox [(ngModel)]="variable[2]" value="strawberry">Strawberry</mat-checkbox>
+  </div>
+  <div class="col-md-8">
+    <mat-form-field style="width: 100%;">
+      <mat-label>Major:</mat-label>
+      <mat-select [(ngModel)]="item6">
+        <mat-option *ngFor="let item of major_list" value="{{item}}">{{item}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-8 w3l-form-group" style="width: 100%;">
+    <section class="example-section">
+      <label class="example-margin">item7:</label>&nbsp;
+      <mat-radio-group [(ngModel)]="item7">
+        <mat-radio-button class="example-margin" value="primary">
+          Primary
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" value="accent">
+          Accent
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" value="warn">
+          Warn
+        </mat-radio-button>
+      </mat-radio-group>
+    </section>
+  </div>
+</div>
+<button mat-raised-button type="submit" class="btn
+  btn-danger pull-right" (click)="saveMyDataToDB()">Create Database</button>
+<div class="clearfix"></div>

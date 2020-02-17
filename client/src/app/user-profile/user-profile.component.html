@@ -1,0 +1,25 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Create Database</h4>
+                        <p class="card-category">please work here !!!</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <app-create-mydata
+                                (numberGenerated)="getAllMydata()"></app-create-mydata>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <app-manage-database [users]="filtered_mydata"
+                    (numberGenerated2)="del_getOnedata($event)"></app-manage-database>
+            </div>
+
+        </div>
+    </div>
